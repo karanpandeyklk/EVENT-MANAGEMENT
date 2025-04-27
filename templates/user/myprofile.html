@@ -1,0 +1,70 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<style>
+    .form-control
+    {
+    height:50px;
+    margin-button:3%;
+    background:grey;
+    border:none;
+    }
+    #dv
+    {
+    display:none;
+    }
+</style>
+<div class="fs-2 text-center">
+   My <b class="text-danger">Profiles</b>
+</div><br/>
+<div class="row">
+<div class="col-sm-10 mx-auto">
+  {% for i in mdata %}
+<!-- start card-->
+    <div class="card mb-3 mx-auto" style="width:640px; height:280px;">
+  <div class="row g-0">
+    <div class="col-md-5 p-5">
+      <img src="/{{i.upic}}" style="height:200px;width:650px;border:8px solid black;" class="img-fluid rounded-pill" alt="...">
+    </div>
+    <div class="col-md-7 py-5">
+      <div class="card-body">
+        <p class="card-text" style="line-height:30px;">
+          <i class="fa-solid fa-user"> {{i.uname}}</i><br/>
+          <i class="fa-solid fa-envelope"> {{i.email}}</i><br/>
+          <i class="fa-solid fa-lock"> {{i.passwd}}</i><br/>
+          <i class="fa-solid fa-location-dot"> {{i.address}}</i><br/>
+          <a href="#" class="btn btn-sm btn-success" onclick="demo()">Edit Prifile <i class="fa=solid fa-pen-to-square"></i></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  {% endfor %}
+  <!--end card-->
+</div>
+</div>
+<div id="dv">
+<div class="row bg-mycolor py-5">
+
+  <div class="col-sm-6 mx-auto">
+    <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Name<input type="text" name="name" placeholder="Name.." class="form-control"/>
+            Password<input type="password" name="passwd" placeholder="password.." class="form-control"/>
+            Picture<input type="file" name="fu" class="form-control"/>
+            Address<textarea class="form-control" name="address"></textarea>
+        </form>
+  </div>
+</div>
+    </div>
+<script>
+    {% if not request.session.user %}
+    alert('you have to login first..')
+    location.href='/user/signin/'
+    {% endif %}
+ function demo()
+ {
+ document.getElementById("dv").style.display="block";
+   }
+</script>
+{% endblock %}

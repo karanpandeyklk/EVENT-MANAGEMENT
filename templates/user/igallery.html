@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% load  static %}
+{% block content %}
+<div class="text-center fs-2">
+  Glimpse of Successful<b class="txt-mycolor"> Events</b>
+</div>
+<div class="row">
+    <div class="col-sm-2 py-2" style="background:#d1d1d1;">
+        <ul class="list-group">
+  <li class="list-group-item bg-mycolor">Event Category</li>
+  {% for i in cdata %}
+            <li class="list-group-item">
+            <img src="/{{i.cpic}}" style="height:50px;" class="img-thumbnail"/>
+           <a href="/user/imagegallery/?cid={{i.id}}" style="text-decoration:none;color:grey;">{{i.cname}}</a>
+            </li>
+            {% endfor %}
+
+</ul>
+    </div>
+    <div class="col-sm-10">
+        <div class="row">
+            {% for i in idata%}
+            <div class="col-sm-4 p-2">
+                <div class="card" style="width: 18rem;">
+  <img src="/{{i.picture}}" style="max-height:180px;" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title text-center">{{i.category}}</h5>
+      <p class="card-text">
+          {{i.event_des}}
+          <b>
+          </b><br/>
+          <span class="badge bg-mycolor">
+              <i class="fa-solid fa-calendar-days"></i>
+           {{i.eventdate}}
+              </span>
+      </p>
+
+  </div>
+</div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

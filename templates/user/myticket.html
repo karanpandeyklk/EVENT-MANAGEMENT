@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+{% if not request.session.user %}
+<script>
+    alert('you have to first sign in')
+    location.href='/user/signin/'
+</script>
+{% endif %}
+<div class="fs-3 text-center">
+    My<b class="text-mycolor"> Tickets</b>
+</div>
+<div class="row">
+    <div class="col-md-9 mx-auto">
+        <!--card-->
+        <div class="card md-3">
+            <div class="ro g-0">
+      <div class="card-body">
+        <table class="table table-hover">
+            <tr>
+                <td>Event picture:</td>
+                <td>Ticket No:</td>
+                <td>Event Name:</td>
+                <td>Speaker Name:</td>
+                <td>Booking Date:</td>
+                <td>Event Date:</td>
+                <td>Cancel</td>
+            </tr>
+            {% for i in myticket %}
+            <tr>
+                <td>
+                    <img src="/{{i.event_picture}}" style="height:100px;width:100px;"
+                </td>
+                <td>EMS1001{{i.id}}</td>
+                <td>{{i.event_name}}</td>
+                <td>{{i.speaker_name}}
+                    </td>
+                <td>{{i.booking_date}}</td>
+                <td>{{i.event_date}}</td>
+                <td> <a href="/user/myticket?bid={{i.id}}" class="btn btn-sm bg-danger rounded-pill text-white">Cancel <i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+  </div>
+</div>
+            <!--end card-->
+
+</div>
+</div>
+
+{% endblock %}

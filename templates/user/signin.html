@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<style>
+    .form-control
+    {
+    height:50px;
+    margin-button:3%;
+    background:lightgrey;
+    border:none;
+    }
+
+
+</style>
+<div class="text-center fs-2">
+    User<b class="txt-mycolor">Login</b></div>
+<div class="col-sm-6 mx-auto">
+    <form method="post">
+        {% csrf_token %}
+        USERNAME
+        <input type="email"name="email"placeholder="USERNAME.." class="form-control"/>
+        PASSWORD
+        <input type="password"name="passwd"placeholder=".." class="form-control"/>
+        <input type="submit"value="LOGIN" class="btn bg-mycolor"/>
+    </form>
+</div>
+{% endblock %}

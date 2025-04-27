@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load  static %}
+{% block content %}
+<div class="text-center fs-2">
+    Our<b class="txt-mycolor"> Upcoming Event</b>
+</div>
+<div class="row">
+    <div class="col-sm-6 mx-auto">
+        <form method="get">
+        <div class="input-group mt-4">
+            <input type="text" name="search" style="background:#d1d1d1 !important;" placeholder="Search upcoming events..." class="form-control"/>
+        <i class="input-group-text bg-mycolor text-light">
+            <input type="submit" class="btn text-light"  value="Search"/>
+        </i>
+        </div>
+            </form>
+    </div>
+</div>
+
+<div class="row my-4">
+     {% for a in edata %}
+                 <!-- start upcomming event-->
+                 <div class="col-lg-3 col-md-6 col-sm-12">
+                     <div class="card">
+                         <img src="/{{a.event_picture}}" style="max-height:150px" class="img-card-top"/>
+                     <div class="card-body">
+                         <b>{{a.event_category}}</b><br/>
+                         {{a.speaker_name}}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/{{a.speaker_picture}}" clas="img-thumbnail float-end" style="max-height:45px;"/><br/>
+                         {{a.hotel}}<br/>
+
+                         <i class="fa-solid fa-indian-rupee-sign"></i>
+                         <b>{{a.dprice}}/-</b> <s>{{a.price}}/-</s><br/>
+                         <a href="/user/viewdetails?msg={{a.id}}" class="btn btn-sm rounded-pill  bg-mycolor text-light">More Info.</a>
+
+                     </div>
+                     </div>
+
+                 </div>
+                 <!-- end upcomming event-->
+                 {% endfor %}
+</div>
+{% endblock %}

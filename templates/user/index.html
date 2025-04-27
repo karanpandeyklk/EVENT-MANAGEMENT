@@ -1,0 +1,109 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+ <div class="row slider bg-mycolor">
+        <div class="col-sm-4">
+            <marquee direction="down" behavior="alternate" height="400px">
+     {% for a in edata1 %}
+            <!--start card-->
+            <div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/{{a.event_picture}}" style="height:150px;" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+          <p class="card-text">
+              <b>{{a.event_category}}</b><br/>
+            <a href="/user/viewdetails?msg={{a.id}}" class="badge bg-mycolor">More Info.</a>
+             {{a.event_date}}
+        </p>
+        </div>
+    </div>
+  </div>
+</div>
+            <!--end card-->
+                {% endfor %}
+            </marquee>
+        </div>
+        <div class="col-sm-8 p-2">
+            <!--start slider-->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/p1.jpg'%}" style="max-height:420px; border-radius:20px;" class="d-block w-100" alt="...">
+    </div>
+      {% for i in sdata %}
+    <div class="carousel-item">
+      <img src="/{{i.spic}}" style="max-height:420px;border-radius:20px;" class="d-block w-100" alt="...">
+    </div>
+      {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+            <!--end slider-->
+        </div>
+    </div>
+
+    <div class="row category py-3 mt-2 bg-mycolor">
+        {% for x in cdata %} <!--[row,row]-->
+        <div class="col-lg-2 col-mb-4 col-sm-12">
+            <!--start category-->
+            <div class="card">
+                <img src="/{{x.cpic}}" class="card-img-top" style="height:160px;"/>
+                     <div class="card-body">
+                       <a href="/user/event/?msg={{x.id}}" style="text-decoration:none;color:grey;font-size:14px;">
+                           <p class="text-center"><b>{{x.cname}}</b></p>
+                    </a>
+                     <br/>
+
+                     </div>
+            </div>
+            <!--end category-->
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row product py-3 mt-2 bg-mycolor">
+        <div class="fs-2">Upcoming<b class="txt-mycolor"> Event</b></div>
+         <div class="col-sm-10 mx-auto ">
+             <div class="row">
+                 {% for a in edata %}
+                 <!-- start upcomming event-->
+                 <div class="col-lg-3 col-md-6 col-sm-12 ">
+                     <div class="card">
+                         <img src="/{{a.event_picture}}" style="max-height:150px" class="img-card-top"/>
+                     <div class="card-body">
+                         <b>{{a.event_category}}</b><br/>
+                         {{a.speaker_name}}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/{{a.speaker_picture}}" clas="img-thumbnail float-end" style="max-height:45px;"/><br/>
+                         {{a.hotel}}<br/>
+
+                         <i class="fa-solid fa-indian-rupee-sign"></i>
+                         <b>{{a.dprice}}/-</b> <s>{{a.price}}/-</s><br/>
+                          <a href="/user/viewdetails?msg={{a.id}}" class="btn btn-sm rounded-pill  bg-mycolor text-light">More Info.</a>
+
+                     </div>
+                     </div>
+
+                 </div>
+                 <!-- end upcomming event-->
+                 {% endfor %}
+             </div>
+         </div>
+
+    </div>
+{% endblock %}

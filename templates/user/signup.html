@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<style>
+    .form-control
+    {
+    height:50px;
+    margin-button:3%;
+    background:lightgrey;
+    border:none;
+    }
+</style>
+<div class="text-center fs-2">
+ <div class="text-center">Sign<b class="text-center text-mycolor"></b></div>
+</div>
+<div class="row">
+    <div class="col-sm-6 mx-auto">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Name<input type="text" name="name" placeholder="Name.." class="form-control"/>
+            Email<input type="email" name="email" placeholder="Email.." class="form-control"/>
+            Password<input type="password" name="passwd" placeholder="password.." class="form-control"/>
+            Picture<input type="file" name="fu" class="form-control"/>
+            Address<textarea class="form-control" name="address"></textarea>
+            <input type="submit" value="Save" class="btn bg-mycolor text-light"/>
+        </form>
+
+    </div>
+
+</div>
+{% endblock %}

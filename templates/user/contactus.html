@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<style>
+    .form-control
+    {
+    height:45px;
+    margin-bottom:5%;
+
+    }
+</style>
+<div class="text-center fs-2">
+    Contact<b class="txt-mycolor"> Us</b>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 mx-auto">
+            <div class="row">
+                <div class="col-sm-6">
+                    <form method="post">
+                        {% csrf_token %}
+                        <b>Name</b><input type="text" name="name" placeholder="Name.." class="form-control"/>
+                        <b>Email</b><input type="email" name="email" placeholder="Email.." class="form-control"/>
+                        <b>Mobile</b><input type="number" name="mobile" placeholder="Mobile.." class="form-control"/>
+                        <b>Message</b><textarea style="min-height:80px; resize:none;" name="message" placeholder="Enter Your Message.." class="form-control"></textarea>
+                        <input type="submit" value="Save" class="btn bg-mycolor"/>
+                        </form>
+
+                </div>
+                <div class="col-sm-6 bg-light">
+
+                   <h5 class="ps-5 mt-5"><b>Our Location</b></h5><br/>
+                    <p class="ps-5">
+                        <i class="fa-solid fa-house-chimney" style="color: #f90b23;"></i>Mirzapur  , Kachahri Road ,  Uttar Pradesh 231001</p>
+                    <p class="ps-5"><i class="fa-solid fa-phone-volume" style="color: #f90b0b;"></i> +918115887289</p>
+                    <p class="ps-5"><i class="fa-solid fa-phone-volume" style="color: #f90b0b;"></i> +918115887289</p>
+                    <p class="ps-5"><i class="fa-solid fa-envelope" style="color: #ff0505;"></i> karanpandey27019@gmail.com</p>
+                    <p class="ps-5 "><b>Stay Connected</b></p>
+                    <p class="ps-5">
+                    <i class="fa-brands fa-square-facebook" style="color: #fd3512;"></i>
+                    <i class="fa-brands fa-square-twitter" style="color: #fd3512;"></i>
+                    <i class="fa-brands fa-square-whatsapp" style="color: #fd3512;"></i>
+                    <i class="fa-brands fa-square-instagram" style="color: #fd3512;"></i>
+                    <i class="fa-brands fa-square-youtube" style="color: #fd3512;"></i>
+                    </p>
+
+
+                </div>
+            </div>
+            </div>
+        </div>
+
+{% endblock %}

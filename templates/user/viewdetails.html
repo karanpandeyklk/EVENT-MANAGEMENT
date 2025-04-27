@@ -1,0 +1,66 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+{% if not request.session.user %}
+
+<script>
+    alert('you have to login first... ');
+    location.href='/user/signin/'
+</script>
+{% endif %}
+
+<div class="text-center fs-2">
+    Event <b class="txt-mycolor"> Detail</b>
+    </div>
+
+<div class="row">
+    <div class="col-sm-10 mx-auto">
+        <!-- start card-->
+        {% for i in edata %}
+        <div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/{{i.event_picture}}" style="max-height:250px;" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{i.event_category}}</h5>
+        <p class="card-text">{{i.event_detail}}</p>
+        <p class="card-text"><big>{{i.speaker_name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="/{{i.speaker_picture}}" class="img-thumbnail" style="max-height:80px;"/>
+        </big></p>
+          <p class="card-text">
+              <i class="fa-solid fa-hotel"></i> {{i.hotel}}&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
+             <big> <i class="fa-solid fa-indian-rupee-sign"></i><b> {{i.dprice}}/-</b> <del class="text-danger">{{i.price}}/-</del>
+           </big>
+          </p>
+        <p class="card-text"><small class="text-body-secondary">
+            <i class="fa-solid fa-city"></i> {{i.city}} &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa-solid fa-calendar-days"></i> {{i.event_date}}
+
+<form method="get" action="/user/booking/">
+    <input type="hidden" name="title"value="{{i.event_category}}"/>
+    <input type="hidden" name="spic" value="{{i.speaker_picture}}"/>
+    <input type="hidden" name="sname" value="{{i.speaker_name}}"/>
+    <input type="hidden" name="epic" value="{{i.event_picture}}"/>
+    <input type="hidden" name="city" value="{{i.city}}"/>
+    <input type="hidden" name="hotel" value="{{i.hotel}}"/>
+    <input type="hidden" name="price" value="{{i.price}}"/>
+    <input type="hidden" name="edate" value="{{i.event_date}}"/>
+
+    <input type="submit" value="Book Now"class="btn bg-mycolor text-light"/>
+
+</form>
+
+        </small></p>
+      </div>
+    </div>
+  </div>
+</div>
+        {% endfor %}
+        <!-- end card-->
+
+    </div>
+</div>
+
+{% endblock %}

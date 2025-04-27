@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/all.css' %}" rel="stylesheet"/>
+    <title>Title</title>
+    <style>
+        :root
+        {
+        --bgcolor:#3ea6ff;
+        --txtcolor:#007E33;
+        }
+        .t1
+        {
+        font-size:14px;
+        }
+        .bg-mycolor
+        {
+        background:var(--bgcolor) !important;
+        }
+        .txt-mycolor
+        {
+        color:var(--txtcolor);
+        }
+        .fa-brands
+        {
+        border:1px solid white;
+        padding:.3%;
+        transition:all 1s;
+        }
+        .fa-brands:hover
+        {
+       transform:rotate(360deg);
+       transition:all 1s;
+       background:white;
+       color:#FF8800;
+        }
+        #menu
+        {
+        background:transparent !important;
+        }
+        #menu ul li a
+        {
+        color:white;
+        }
+        .ufooter
+        {
+        min-height:300px;
+        }
+        .bfooter
+        {
+        min-height:50px;
+        }
+
+
+    </style>
+</head>
+<body>
+<script src="{% static 'js/bootstrap.bundle.js'%}"></script>
+<div class="container-fluid">
+    <div class="row t1 text-center bg-mycolor text-light py-1">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <i class="fa-solid fa-phone"></i> +918115887289
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <i class="fa-solid fa-envelope"></i>
+            karanpandey27019@gmail.com
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            An ISO Certified Software Company
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+<i class="fa-brands fa-square-facebook"></i>
+<i class="fa-brands fa-square-twitter"></i>
+<i class="fa-brands fa-square-instagram"></i>
+<i class="fa-brands fa-square-youtube"></i>
+<i class="fa-brands fa-square-whatsapp"></i>
+            <i class="fa-brands fa-linkedin"></i>
+        </div>
+    </div>
+    <div class="row t2">
+        <div class="col-sm-10 mx-auto">
+<div class="row py-3">
+    <div class="col-sm-4 fs-2">
+        <b class="text-danger"style="font-family:Britannic Bold">Event management
+        <i class="fa-solid fa-calendar-days fa-fade"></i></b>
+    </div>
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-2 text-end fs-5">
+
+        {% if request.session.user %}
+         <a href="#" class="nav-link disabled"> {{ request.session.username }}
+              <img src="/{{ request.session.userpic }}" style="max-height:30px;" class="img-thumbnail">
+                   </a>
+        {% else %}
+        <a href="#" class="nav-link disabled">
+              <img src="{% static 'images/defaultuser.jpeg' %}" style="max-height:30px;" class="img-thumbnail">
+                   </a>
+        {% endif %}
+
+    </div>
+    <div class="col-sm-4">
+{% if request.session.user %}
+        <a href="/user/myticket/" class="btn btn-sm bg-mycolor text-light">
+            <i class="fa-solid fa-ticket"></i>
+            MyTickets
+        </a>
+        <a href="/user/myprofile/" class="btn btn-sm bg-mycolor text-light">
+            <i class="fa-solid fa-ticket"></i>
+            MyProfile
+        </a>
+        <a href="/user/logout" class="btn btn-sm bg-mycolor text-light">
+            <i class="fa-solid fa-power-off"></i>
+            Sign Out
+        </a>
+{% else %}
+        <a href="/user/signin" class="btn btn-sm bg-mycolor text-light">
+<i class="fa-solid fa-right-to-bracket"></i>
+        Sign In </a>
+{% endif %}
+
+    </div>
+</div>
+    </div>
+        </div>
+    <div class="row t3 bg-mycolor">
+        <div class="col-sm-10 mx-auto">
+            <!--start menu-->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" id="menu">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/user/index/"><i class="fa-solid fa-house"></i>
+              Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/about/"><i class="fa-solid fa-circle-info"></i>
+              About Us</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/user/event/"><i class="fa-solid fa-calendar-days"></i>
+              Event</a>
+        </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/user/gallery/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Succesfull Events
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item bg-dark" href="/user/imagegallery">Image Gallery</a></li>
+            <li><a class="dropdown-item bg-dark" href="/user/videogallery">Video Gallery</a></li>
+          </ul>
+          <li class="nav-item">
+          <a class="nav-link" href="/user/contact/"><i class="fa-solid fa-location-dot"></i>
+              Contact Us</a>
+        </li>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/user/signup/"><i class="fa-solid fa-book"></i>
+              Registration</a>
+        </li>
+<li class="nav-item">
+          <a class="nav-link" href="/user/signup/"><i class="fa-solid fa-right-to-bracket"></i>
+              Admin Login</a>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+            <!--end menu-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 py-3" style="min-height:500px;">
+{% block content %}
+    {% endblock %}
+        </div>
+        </div>
+
+    <div class="row ufooter bg-dark">
+        <!-- Footer -->
+<footer class="text-center text-lg-start bg-dark text-muted">
+
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5 py-3 bg-light">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <b class="txt-mycolor" style="font-family:Algerian;">Digitized<i class="fa-solid fa-laptop-file"></i></b>
+          </h6>
+          <div>Address: Mirzapur , uttar pradesh  </div>
+		  <div>Phone:8115887289</div>
+		  <div>E-mail:karanpandey27019@gmail.com</div>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="fw-bold mb-4" style="font-family:Algerian;">
+            Information
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">About Us</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Checkout</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Contact</a>
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="fw-bold mb-4" style="font-family:Algerian;">
+            My Account
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">My Account</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Contact</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Shopping Cart</a>
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="fw-bold mb-4" style="font-family:Algerian;">Join Our Newsletter Now</h6>
+
+          <p style="color:red;">
+            Get e-mail updates about our latest shop and special offers
+          </p>
+		  <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Enter Your Mail" aria-label="Search">
+      <button type="button" class="btn btn-danger">SUBSCRIBE</button>
+
+    </form>
+
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+
+</footer>
+<!-- Footer -->
+    </div>
+
+    <div class="row bfooter bg-dark mt-2">
+        <div class="col-sm-6 text-white text-center mt-3">© 2023  Event Management : All Right reserver.</div>
+        <div class="col-sm-6 text-white text-center mt-3">Devloped by Karan pandey.</div>
+
+    </div>
+
+</div>
+</body>
+</html>
